@@ -8,7 +8,7 @@ import datetime
 def parse_and_process_files():
     print("Parsing evidence json file.....")
     # Parsing evidence json values to DF by chucks because of large size
-    evidence_dfs = pd.read_json("evidence2.json", lines=True, chunksize=25000)
+    evidence_dfs = pd.read_json("evidence.json", lines=True, chunksize=25000)
     # Concatinating all chunks of DFs
     evidence_dfs_combined = pd.concat(evidence_df[['diseaseId', 'targetId', 'score']] for evidence_df in evidence_dfs)
 
@@ -23,7 +23,7 @@ def parse_and_process_files():
 
     print("Parsing and processing targets json file......")
     # Importing all targets from targets json file by chunks
-    target_dfs = pd.read_json("targets3.json", lines=True, chunksize=25000)
+    target_dfs = pd.read_json("targets.json", lines=True, chunksize=25000)
     # Concatinating all chunk DFs to one
     target_df_ed  = pd.concat(target_df[['id', 'approvedSymbol']] for target_df in target_dfs)
     # Merging target DF to Evidence DF based on IDs
