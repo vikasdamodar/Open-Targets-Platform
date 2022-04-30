@@ -31,7 +31,7 @@ def parse_and_process_files():
 
     print("Parsing and processing desease json file......")
     # Importing all deseases from json file to DF
-    desease_df = pd.read_json("deseases.json", lines=True)
+    desease_df = pd.read_json("diseases.json", lines=True)
     # Merge deseases to evidence DF based on IDs
     joined_df = joined_df.merge(desease_df[['id', 'name']], how='left', left_on='diseaseId', right_on='id')
     joined_df = joined_df.sort_values(by=['medianScore'])
